@@ -50,9 +50,3 @@ O frontend é construído com componentes reutilizáveis, hooks customizados par
 - Shadcn UI (componentes estilizados)
 - React Hook Form (para formulários)
 - Axios (para chamadas HTTP internas)
-
----
-
-## 🌐 Demo
-
-O projeto está disponível online:
