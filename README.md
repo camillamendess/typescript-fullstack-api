@@ -1,6 +1,6 @@
 # Projeto FullStack - API e Frontend de Usuários
 
-Este projeto foi criado com o objetivo principal de praticar e aprimorar conhecimentos adquiridos em estudos sobre desenvolvimento web full stack, utilizando tecnologias modernas tanto no backend quanto no frontend.
+Este projeto foi criado com o objetivo principal de praticar e aprimorar conhecimentos adquiridos em estudos sobre desenvolvimento full stack, utilizando tecnologias modernas tanto no backend quanto no frontend.
 
 **Backend:** Desenvolvido com **Node.js**, **Express.js**, **TypeScript** e **MongoDB**, seguindo o **Repository Pattern** para melhor organização e desacoplamento da lógica de negócio e acesso a dados.
 
