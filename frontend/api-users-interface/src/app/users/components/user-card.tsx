@@ -42,7 +42,7 @@ export const UserCard = ({ user, onDelete, onEdit }: UserProps) => {
         <div className="absolute top-1 lg:top-5 right-1 lg:right-5 flex gap-0.5">
           <button
             onClick={() => onEdit(user)}
-            className="lg:bg-[#765086] lg:hover:bg-[#483353] cursor-pointer transition duration-300 ease-in-out p-0.5 lg:p-1.5 pl-2 rounded-xl"
+            className="lg:bg-[#765086] lg:hover:bg-[#483353] cursor-pointer transition duration-300 ease-in-out p-0.5 lg:p-1.5 lg:pl-2 rounded-xl"
           >
             <FaFilePen color="white" size={16} />
           </button>
