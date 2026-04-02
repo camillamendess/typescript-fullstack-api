@@ -4,10 +4,10 @@ import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IUpdateUserRepository, UpdateUserParams } from "./protocols";
 
 export class UpdateUserController implements IController {
-  constructor(private readonly updateUserRepository: IUpdateUserRepository) { }
+  constructor(private readonly updateUserRepository: IUpdateUserRepository) {}
 
   async handle(
-    httpRequest: HttpRequest<UpdateUserParams>
+    httpRequest: HttpRequest<UpdateUserParams>,
   ): Promise<HttpResponse<User | string>> {
     try {
       const id = httpRequest?.params?.id;
@@ -27,16 +27,18 @@ export class UpdateUserController implements IController {
         "password",
         "city",
         "country",
-        "img"
+        "img",
       ];
 
       const receivedFields = Object.keys(body);
       const disallowedFields = receivedFields.filter(
-        (key) => !allowedFieldsToUpdate.includes(key as keyof UpdateUserParams)
+        (key) => !allowedFieldsToUpdate.includes(key as keyof UpdateUserParams),
       );
 
       if (disallowedFields.length > 0) {
-        return badRequest(`Fields not allowed to update: ${disallowedFields.join(", ")}`);
+        return badRequest(
+          `Fields not allowed to update: ${disallowedFields.join(", ")}`,
+        );
       }
 
       const user = await this.updateUserRepository.updateUser(id, body);
@@ -47,6 +49,7 @@ export class UpdateUserController implements IController {
 
       return ok<User>(user);
     } catch (error) {
+      console.error(error);
       return serverError();
     }
   }

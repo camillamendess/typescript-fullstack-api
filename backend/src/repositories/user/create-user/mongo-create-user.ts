@@ -1,9 +1,10 @@
-import { CreateUserParams, ICreateUserRepository } from "../../../routes/user/controllers/create-users/protocols";
+import {
+  CreateUserParams,
+  ICreateUserRepository,
+} from "../../../routes/user/controllers/create-users/protocols";
 import { MongoClient } from "../../../database/mongo";
 import { User } from "../../../models/user";
 import { MongoUser } from "../../mongo-protocols";
-
-// Inserir dados no banco 
 
 export class MongoCreateUserRepository implements ICreateUserRepository {
   async createUser(params: CreateUserParams): Promise<User> {
@@ -27,7 +28,4 @@ export class MongoCreateUserRepository implements ICreateUserRepository {
     // caso criado, substituindo _id para id
     return { id: _id.toHexString(), ...rest };
   }
-
 }
-
-// O que é CORS?

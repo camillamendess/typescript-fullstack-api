@@ -6,13 +6,19 @@ import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { CreateUserParams, ICreateUserRepository } from "./protocols";
 
 export class CreateUserController implements IController {
-  constructor(private readonly createUserRepository: ICreateUserRepository) { }
+  constructor(private readonly createUserRepository: ICreateUserRepository) {}
 
   async handle(
-    httpRequest: HttpRequest<CreateUserParams>
+    httpRequest: HttpRequest<CreateUserParams>,
   ): Promise<HttpResponse<User | string>> {
     try {
-      const requiredFields = ["firstName", "lastName", "city", "country", "img"];
+      const requiredFields = [
+        "firstName",
+        "lastName",
+        "city",
+        "country",
+        "img",
+      ];
 
       for (const field of requiredFields) {
         if (!httpRequest?.body?.[field as keyof CreateUserParams]?.length) {
@@ -20,11 +26,12 @@ export class CreateUserController implements IController {
         }
       }
       const user = await this.createUserRepository.createUser(
-        httpRequest.body!
+        httpRequest.body!,
       );
 
       return created<User>(user);
     } catch (error) {
+      console.error(error);
       return serverError();
     }
   }

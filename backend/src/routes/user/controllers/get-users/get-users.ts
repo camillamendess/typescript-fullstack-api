@@ -1,10 +1,11 @@
+import { MongoClient } from "../../../../database/mongo";
 import { User } from "../../../../models/user";
 import { ok, serverError } from "../helpers";
 import { HttpResponse, IController } from "../protocols";
 import { IGetUsersRepository } from "./protocols";
 
 export class GetUsersController implements IController {
-  constructor(private readonly getUsersRepository: IGetUsersRepository) { }
+  constructor(private readonly getUsersRepository: IGetUsersRepository) {}
 
   async handle(): Promise<HttpResponse<User[] | string>> {
     try {
@@ -12,6 +13,7 @@ export class GetUsersController implements IController {
 
       return ok<User[]>(users);
     } catch (error) {
+      console.error("ERRO [GetUsersController]:", error);
       return serverError();
     }
   }
