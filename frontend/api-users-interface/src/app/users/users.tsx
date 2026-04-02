@@ -16,7 +16,8 @@ const UsersPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const { data: users, loading: hookLoading, error, refetch } = useGetUsers();
-  const { data: seachResults, loading: searchLoading } = useSearchUsers(debouncedSearchTerm);
+  const { data: seachResults, loading: searchLoading } =
+    useSearchUsers(debouncedSearchTerm);
 
   const displayedUsers = searchTerm ? seachResults : users;
 
@@ -59,7 +60,7 @@ const UsersPage = () => {
           if (!isOpen) setUserToEdit(null); // limpa ao fechar
         }}
         onSubmit={onSubmit}
-        user={userToEdit} // passa para o modal 
+        user={userToEdit} // passa para o modal
       />
 
       <div className="flex flex-col justify-center items-center p-8 pb-2">
@@ -68,12 +69,12 @@ const UsersPage = () => {
           <input
             type="text"
             placeholder="Search"
-            className="border border-[#ffffff31] w-[500px] rounded-2xl p-2 mt-2 focus:outline-none  text-white"
+            className="border border-[#ffffff31] w-56 md:w-[400px] lg:w-[500px] rounded-2xl p-2 mt-2 focus:outline-none  text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <Button
-            className="bg-[#765086] text-white p-5 rounded-2xl mt-2 cursor-pointer hover:bg-[#483353] transition duration-300 ease-in-out"
+            className="bg-[#765086] text-white p-4 lg:p-5 rounded-2xl mt-2 cursor-pointer hover:bg-[#483353] transition duration-300 ease-in-out"
             onClick={() => {
               setUserToEdit(null); // garante que está limpando
               setOpenModal(true);
@@ -85,7 +86,6 @@ const UsersPage = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 rounded-2xl mt-4 pt-2">
-
         {loading || searchLoading ? (
           <LoadingIndicator />
         ) : !error && displayedUsers && displayedUsers.length > 0 ? (
@@ -98,7 +98,9 @@ const UsersPage = () => {
             />
           ))
         ) : (
-          !loading && !searchLoading && debouncedSearchTerm && (
+          !loading &&
+          !searchLoading &&
+          debouncedSearchTerm && (
             <p className="text-white">Nenhum usuário encontrado.</p>
           )
         )}

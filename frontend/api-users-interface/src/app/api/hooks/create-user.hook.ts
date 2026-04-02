@@ -27,13 +27,12 @@ export const useCreateUser = () => {
         return response.data;
       }
     } catch (err) {
-      console.error(err);
+      console.error("Erro [CREATE-USER-HOOK]: ", err);
       setError("Erro ao criar usuário");
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return { createUser, loading, error, success };
-
-}
+};
