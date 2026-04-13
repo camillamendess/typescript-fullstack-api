@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Users",
+  title: "Gerenciamento de Usuários",
   description: "User management application",
 };
 

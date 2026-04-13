@@ -1,4 +1,9 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserForm } from "./user-form/user-form";
@@ -10,10 +15,15 @@ interface AddUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: UserFormValues) => void;
-  user?: User & { id?: string } | null;
+  user?: (User & { id?: string }) | null;
 }
 
-export const AddUserDialog = ({ open, onOpenChange, onSubmit, user }: AddUserDialogProps) => {
+export const AddUserDialog = ({
+  open,
+  onOpenChange,
+  onSubmit,
+  user,
+}: AddUserDialogProps) => {
   const form = useForm<UserFormValues>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -50,10 +60,16 @@ export const AddUserDialog = ({ open, onOpenChange, onSubmit, user }: AddUserDia
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{user ? "Edit User" : "Add User"}</DialogTitle>
+          <DialogTitle>
+            {user ? "Editar Usuário" : "Adicionar Usuário"}
+          </DialogTitle>
         </DialogHeader>
         <FormProvider {...form}>
-          <UserForm onSubmit={handleSubmit} onClose={() => onOpenChange(false)} user={user} />
+          <UserForm
+            onSubmit={handleSubmit}
+            onClose={() => onOpenChange(false)}
+            user={user}
+          />
         </FormProvider>
       </DialogContent>
     </Dialog>

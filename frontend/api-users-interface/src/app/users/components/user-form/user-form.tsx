@@ -22,10 +22,10 @@ const fields: Array<{
   label: string;
   placeholder: string;
 }> = [
-  { name: "firstName", label: "First Name", placeholder: "John" },
-  { name: "lastName", label: "Last Name", placeholder: "Doe" },
-  { name: "city", label: "City", placeholder: "New York" },
-  { name: "country", label: "Country", placeholder: "USA" },
+  { name: "firstName", label: "Nome", placeholder: "John" },
+  { name: "lastName", label: "Sobrenome", placeholder: "Doe" },
+  { name: "city", label: "Cidade", placeholder: "New York" },
+  { name: "country", label: "País", placeholder: "USA" },
 ] as const;
 
 interface UserFormProps {
@@ -143,7 +143,7 @@ export const UserForm = ({ onSubmit, onClose, user }: UserFormProps) => {
           type="submit"
           className="bg-[#6d4c7d] text-white cursor-pointer"
         >
-          {user ? "Update" : "Add"}
+          {user ? "Atualizar" : "Adicionar"}
         </Button>
       </form>
     </Form>

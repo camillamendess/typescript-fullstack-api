@@ -15,35 +15,40 @@ interface DeleteUserAlertProps {
   onCancel: () => void;
 }
 
-const DeleteUserAlert = ({ isOpen, onConfirm, onCancel }: DeleteUserAlertProps) => {
+const DeleteUserAlert = ({
+  isOpen,
+  onConfirm,
+  onCancel,
+}: DeleteUserAlertProps) => {
   return (
-    <AlertDialog
-
-      open={isOpen}
-      onOpenChange={onCancel}
-    >
-      <AlertDialogContent className="bg-[#483353] text-white border-none">
+    <AlertDialog open={isOpen} onOpenChange={onCancel}>
+      <AlertDialogContent className="bg-[#483353] w-[460px] text-white border-none flex flex-col justify-center items-center">
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure you want to delete this user?</AlertDialogTitle>
-          <AlertDialogDescription className="text-white">
-            This action cannot be undone.
+          <AlertDialogTitle className="text-center">
+            Tem certeza que deseja deletar este usuário?
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-white text-center">
+            Essa ação não pode ser desfeita. O usuário será removido
+            permanentemente.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel
-            className="cursor-pointer border-none bg-[#765086] text-white hover:bg-[#644774] transition duration-300 ease-in-out"
-            onClick={onCancel}>
-            Cancel
+            className="w-20 cursor-pointer border-none bg-[#765086] text-white hover:bg-[#644774] transition duration-300 ease-in-out"
+            onClick={onCancel}
+          >
+            Cancelar
           </AlertDialogCancel>
           <AlertDialogAction
-            className="cursor-pointer bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out"
-            onClick={onConfirm}>
-            Delete
+            className="w-20 cursor-pointer bg-red-700 text-white hover:bg-red-600 transition duration-300 ease-in-out"
+            onClick={onConfirm}
+          >
+            Deletar
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};
 
 export default DeleteUserAlert;

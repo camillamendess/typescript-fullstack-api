@@ -64,11 +64,13 @@ const UsersPage = () => {
       />
 
       <div className="flex flex-col justify-center items-center p-8 pb-2">
-        <h1 className="text-3xl font-bold text-white">Users</h1>
+        <h1 className="text-3xl font-bold text-white mb-4">
+          Gerenciamento de Usuários
+        </h1>
         <div className="flex justify-center items-center gap-2">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Procurar usuário"
             className="border border-[#ffffff31] w-56 md:w-[400px] lg:w-[500px] rounded-2xl p-2 mt-2 focus:outline-none  text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -80,7 +82,7 @@ const UsersPage = () => {
               setOpenModal(true);
             }}
           >
-            Add User
+            Adicionar Usuário
           </Button>
         </div>
       </div>
